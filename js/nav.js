@@ -2,8 +2,8 @@ var footer = '<div class="navbar" style="margin: 5px;"><div class="navbar-inner"
 	'<ul class="nav">'+
 		'<li class="active"><a href="/pages/use.html">使用</a></li>'+
 		'<li class="divider-vertical"></li>'+
-		'<li><a href="/pages/setting.html">设置</a></li>'+
-		'<li class="divider-vertical"></li>'+
+		//'<li><a href="/pages/setting.html">设置</a></li>'+
+		//'<li class="divider-vertical"></li>'+
 		'<li><a href="/pages/about.html">关于</a></li>'+
 	'</ul>'+
   '</div></div>';

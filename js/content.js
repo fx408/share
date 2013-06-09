@@ -9,7 +9,7 @@ $(function() {
 	$(shareHtml).appendTo("body");
 	
 	// 图片
-	$("img").mouseover(function() {
+	$(document).on("mouseover", "img", function() {
 		var imgConf = _PSAPP.conf().image,
 			h = $(this).height() >= imgConf.height,
 			w = $(this).width() >= imgConf.width,
@@ -17,8 +17,17 @@ $(function() {
 		if(imgConf.type == "or") c = h || w;
 		else if(imgConf.type == "and") c = h && w;
 		
+		console.log(c);
+		
 		if(c) {
 			var imgId = $(this).attr("_PShare_imageId");
+			if(!imgId) {
+				imgId = parseInt( Math.random()*1000000+100 );
+				$(this).attr("_PShare_imageId", imgId);
+			}
+			
+			console.log(imgId);
+			
 			if(_PSAPP.currentImageId != imgId || $("#_PShare ._PShare_buttons:hidden").length) {
 				_PSAPP.currentImageId = imgId;
 				_PSAPP.showShareBtnSmall($(this).offset());
@@ -48,6 +57,10 @@ $(function() {
 		}
 		e.stopPropagation();
 		return false;
+	});
+	
+	$("#_PShare ._PShare_buttons").mouseover(function() {
+		_PSAPP.hideShareLayer();
 	});
 	
 	$(window).keydown(function(e) {
