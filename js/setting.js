@@ -1,14 +1,28 @@
 $(function() {
-	var defaults = LDB.list();
+	
+	var shareToHtml = "",
+		titles = _SHARE_APP_CONF.titles,
+		conf = _SHARE_APP_CONF.conf();
+		
+	conf = _SHARE_APP_CONF.formatConf(conf);
+	
+	console.log(conf);
+	
+	for(var k in titles) {
+		shareToHtml += '<option value="'+k+'">'+titles[k]+'</option>';
+	}
+	$("select[name=quicklyShareTo]").html(shareToHtml);
+	
 	$("#setting input").each(function() {
 		var t = $(this).attr("type"),
 			k = $(this).attr("name"),
-			v = defaults[k];
+			v = conf[k];
+		if(v == undefined) return false;
 		
 		switch(t) {
 			case "radio":
 				$(this).removeAttr("checked");
-				$("#setting input[name="+k+"][value="+v+"]").click();
+				$("#setting input[name='"+k+"'][value="+v+"]").click();
 				break;
 			case "textarea":
 			case "text":
@@ -19,6 +33,13 @@ $(function() {
 		}
 	});
 	
+	$("#setting select").each(function() {
+		var k = $(this).attr("name"),
+			v = conf[k];
+		if(v == undefined) return false;
+		$(this).val(v);
+	});
+	
 	$("input[name=autoCheck]").change(function() {
 		var val = $(this).val();
 		
@@ -26,10 +47,10 @@ $(function() {
 		else $("tr.frequency").hide();
 	});
 	
-	$("#setting input").change(function() {
+	$("#setting input, #setting select").change(function() {
 		var k = $(this).attr("name"),
 			v = $(this).val();
 		
-		LDB.set(k, v);
+		_SHARE_APP_CONF.update(k, v);
 	});
 });

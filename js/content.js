@@ -294,22 +294,8 @@ function _PShareApp() {
 	
 	// 读取用户配置
 	this.conf = function() {
-		var conf = LDB.item("userShareConfig") || {};
-		for(var k in this.defaultConf) {
-			if(!conf[k]) {
-				conf[k] = this.defaultConf[k];
-			}
-		}
-		return conf;
+		return _SHARE_APP_CONF.conf();
 	}
-	
-	// 默认配置
-	this.defaultConf = {
-		quicklyShare: 0,
-		quicklyShareTo: 'qzone',
-		icons: ["qzone", "tsina", "tqq", "renren", "douban"],
-		image: {height:100, width:100, type:"or"}
-	};
 	
 	// 默认分参数键值
 	this.defaultKeys = {url:'', title:'', pic:''};

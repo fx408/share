@@ -5,6 +5,7 @@
 		<title>Setting</title>
 
 		<script type="text/javascript" src="/js/header.js"></script>
+		<script type="text/javascript" src="/js/conf.js"></script>
 	</head>
 	<body>
 		<div class="main">
@@ -14,11 +15,11 @@
 					<li><a href="#configImage" data-toggle="tab">图片设置</a></li>
 				</ul>
 
-				<div class="tab-content configList">
+				<div class="tab-content configList" id="setting">
 					
 					<!--全局配置-->
 					<div class="tab-pane active" id="globalConf">
-						<table id="setting" class="table table-hover">
+						<table class="table table-hover">
 							<tr>
 								<td>
 									<div class="input-prepend settingInput">
@@ -57,7 +58,7 @@
 									<td>
 										<div class="input-prepend settingInput">
 											<span class="add-on">最小宽度</span>
-											<input class="span2" name="image.width" value="100" type="text" placeholder="">
+											<input class="span2" name="image.width" value="10" type="text" placeholder="">
 										</div>
 									</td>
 									<td class="va-inherit">像素(px)</td>
@@ -67,7 +68,7 @@
 									<td>
 										<div class="input-prepend settingInput">
 											<span class="add-on">最小高度</span>
-											<input class="span2" name="image.height" value="100" type="text" placeholder="">
+											<input class="span2" name="image.height" value="10" type="text" placeholder="">
 										</div>
 									</td>
 									<td class="va-inherit">像素(px)</td>
@@ -99,7 +100,6 @@
 			<script type="text/javascript" src="/js/footer.js"></script>
 		</div>
 		<script type="text/javascript" src="/js/setting.js"></script>
-		<script type="text/javascript" src="/js/group.js"></script>
 	</body>
 </html>
 
