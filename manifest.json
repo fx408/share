@@ -1,0 +1,27 @@
+{ 
+  "manifest_version": 2,
+  "icons": { "128": "images/icon-128.png", "16": "images/icon-16.png" },
+  "name": "mantis",
+  "description": "This extension demonstrates a browser action with kittens.",
+  "version": "1.0",
+
+  "permissions": [
+  	"cookies",
+  	"notifications",
+  	"alarms",
+    "tabs",
+    "webNavigation",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "content_scripts": [{
+		"matches": ["http://*/*", "https://*/*"],
+		"css": ["css/content.css"],
+		"js": ["js/jquery.min.js", "js/localStorage.js", "js/content.js"],
+		"all_frames": true
+	}],
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "default_popup": "pages/index.html"
+  }
+}

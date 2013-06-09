@@ -1,0 +1,76 @@
+/* 全局CSS定义 */
+body,input,select,textarea,table,a,ul,li,tr,td,button,p,div{ font-family:"Microsoft Yahei","微软雅黑",Arial,Helvetica,sans-serif,"宋体"; font-size:12px; color:#333;}
+.clear{clear:both; height:0px; font-size:0px; line-height:0px; overflow:hidden}
+
+/* webkit 滚动条样式*/
+::-webkit-scrollbar { width: 10px; height:10px;}/* Track & scroll thickness */
+::-webkit-scrollbar-track {
+	background-color:#f0f0f0;
+	 border-left:1px solid #d2d2d2;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background: rgba(231,231,231,0.8);
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.4);
+}
+::-webkit-scrollbar-thumb:hover{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
+}
+::-webkit-scrollbar-thumb:active{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.9);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(231,231,231,0.4);
+}
+
+body{width:330px; padding:5px; padding-right:0px;}
+.main{min-height: 240px; overflow:auto; padding-right:0px;}
+.groupList .avatar{width:32px; height:32px; float:left; margin-top:-5px;}
+.btnSet{margin-top:-4px; font-size: 12px}
+.topicList{margin-top:-5px;}
+.configList{margin-top:-21px;}
+
+.settingInput{margin-bottom:0px;}
+.table td.va-inherit{vertical-align: inherit; color:#999}
+
+#searchTopic{min-height:300px;}
+#searchTopic .input-append{margin-top:10px;}
+#searchTopic .searchTopicText{width:160px;}
+#searchTopic .dropdown-menu{width:150px; min-width:150px; max-height:200px; overflow:auto}
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover{cursor:pointer; color:#075CDB}
+
+
+/*
+ * 通讯录
+ */
+.groupList .groupName{color:#09f; font-size:12px; font-weight:600;}
+.groupList .groupCount{margin-left:5px; color:#777}
+
+.groupTitle{line-height:24px; height:24px; cursor:pointer}
+
+.uName{padding:0 5px; font-size:16px; font-weight:600}
+.groupList .uValue{color:#777}
+
+.searchLayer{height:30px; line-height:30px;}
+#userDetail{padding:5px; position:fixed; background-color:#fff; 
+	top:5px; width:308px; text-align:center; margin-left:-2px;
+	border:0px solid #ccc;
+	border-radius:3px; 
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+#userDetail:active{-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);}
+
+#userDetail .contents div{width:100%; text-align:left; line-height:20px;}
+#userDetail .operator{border-top: 1px solid #ddd; margin-top:2px;}
+
+
+/*分组设置*/
+table.group{width:100%; text-align:center;}
+
+.userSettingTable{width:100%; text-align:left;}
+.userSettingTable .l{text-align:right;}

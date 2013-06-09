@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Setting</title>
+
+		<script type="text/javascript" src="/js/header.js"></script>
+	</head>
+	<body>
+		<div class="main">
+			<div class="tabbable">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#globalConf" data-toggle="tab">全局设置</a></li>
+					<li><a href="#configImage" data-toggle="tab">图片设置</a></li>
+				</ul>
+
+				<div class="tab-content configList">
+					
+					<!--全局配置-->
+					<div class="tab-pane active" id="globalConf">
+						<table id="setting" class="table table-hover">
+							<tr>
+								<td>
+									<div class="input-prepend settingInput">
+										<span class="add-on" style="margin-right:10px;">快速分享</span>
+										<label class="radio inline">
+											<input type="radio" name="quicklyShare" value="1" checked="checked">
+											开
+										</label>
+										<label class="radio inline">
+											<input type="radio" name="quicklyShare" value="0">
+											关
+										</label>
+									</div>
+								</td>
+								<td class="va-inherit">将使用默认分享地址</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="input-prepend settingInput">
+										<span class="add-on" style="margin-right:10px;">默认分享</span>
+										<select name="quicklyShareTo" class="span2">
+											<option value="qzone">QQ空间</option>
+										</select>
+									</div>
+								</td>
+								<td class="va-inherit"></td>
+							</tr>
+						</table>
+					</div>
+
+					<!--图片设置-->
+					<div class="tab-pane" id="configImage">
+						<table class="table table-hover">
+							<tbody>
+								<tr>
+									<td>
+										<div class="input-prepend settingInput">
+											<span class="add-on">最小宽度</span>
+											<input class="span2" name="image.width" value="100" type="text" placeholder="">
+										</div>
+									</td>
+									<td class="va-inherit">像素(px)</td>
+								</tr>
+								
+								<tr>
+									<td>
+										<div class="input-prepend settingInput">
+											<span class="add-on">最小高度</span>
+											<input class="span2" name="image.height" value="100" type="text" placeholder="">
+										</div>
+									</td>
+									<td class="va-inherit">像素(px)</td>
+								</tr>
+								
+								<tr>
+									<td>
+										<div class="input-prepend settingInput">
+											<span class="add-on" style="margin-right:10px;">检测关系</span>
+											<label class="radio inline">
+												<input type="radio" name="image.type" value="or" checked="checked">
+												或者
+											</label>
+											<label class="radio inline">
+												<input type="radio" name="image.type" value="and">
+												并且
+											</label>
+										</div>
+									</td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+				</div>
+			</div>
+
+			<script type="text/javascript" src="/js/footer.js"></script>
+		</div>
+		<script type="text/javascript" src="/js/setting.js"></script>
+		<script type="text/javascript" src="/js/group.js"></script>
+	</body>
+</html>
+

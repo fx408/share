@@ -1,0 +1,42 @@
+._PShare{position:absolute;}
+._PShare_clear{height:0px; width:100%; overflow:hidden; clear:both; line-height:0px;padding:0px;margin:0px}
+._PShare_title, ._PShare_buttons{
+	position:absolute;
+	top:0px;
+	left:0px;
+	text-align:center;
+	color: #103470;
+	cursor: pointer;
+	height: 22px;
+	line-height: 22px;
+	width: 30px;
+	background-color:#fff;
+	padding:0px;
+	margin:0px;
+	font-size:12px;
+	font-weight:300;
+	border-radius:4px;
+	-webkit-box-shadow:0 0 5px rgba(0,0,0,0.7);
+	opacity:0.5;
+	z-index:9999999;
+}
+
+._PShare_buttons{width:180px; height:40px; opacity:0.95;}
+._PShare_title{padding:0 2px;}
+
+._PShare_title:active, ._PShare_buttons:active{ -webkit-box-shadow:0 0 5px rgba(0,0,0,0.5);}
+._PShare_title:hover{ color: #1B57BC; opacity:1;}
+
+._PShare_buttons a{
+	display:block;
+	background:url("https://raw.github.com/fx408/huoban/master/images/share_icon.png") no-repeat;
+	height:37px; width:37px; float:left;opacity:0.7;}
+._PShare_buttons a:hover{opacity:1}
+	
+._PShare_buttons a._PShare_more{background-position: 0px 4px;}
+._PShare_buttons a._PShare_qzone{background-position: 0px -76px;}
+._PShare_buttons a._PShare_tsina{background-position: 0px -116px;}
+._PShare_buttons a._PShare_baidu{background-position: 0px -156px;}
+._PShare_buttons a._PShare_renren{background-position: 0px -196px;}
+._PShare_buttons a._PShare_tqq{background-position: 0px -236px;}
+._PShare_buttons a._PShare_douban{background-position: 0px -396px;}
