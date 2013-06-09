@@ -234,7 +234,7 @@ function _PShareApp() {
 		var reg = /^[\w]+\:\/\//,
 			urlCheck = ["pic", "url"];
 		for(var i = 0; i < urlCheck.length; i++) {
-			if(shareData[urlCheck[i]] && !reg.test(shareData[urlCheck[i]])) shareData[urlCheck[i]] = location.protocol+"://"+location.hostname+"/"+shareData[urlCheck[i]];
+			if(shareData[urlCheck[i]] && !reg.test(shareData[urlCheck[i]])) shareData[urlCheck[i]] = location.protocol+"//"+location.hostname+"/"+shareData[urlCheck[i]];
 		}
 		
 		if(diff = this.diffKeys[shareTo]) {

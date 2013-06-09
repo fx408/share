@@ -1,11 +1,9 @@
 $(function() {
-	
 	var shareToHtml = "",
 		titles = _SHARE_APP_CONF.titles,
 		conf = _SHARE_APP_CONF.conf();
 		
 	conf = _SHARE_APP_CONF.formatConf(conf);
-	
 	console.log(conf);
 	
 	for(var k in titles) {
@@ -38,13 +36,6 @@ $(function() {
 			v = conf[k];
 		if(v == undefined) return false;
 		$(this).val(v);
-	});
-	
-	$("input[name=autoCheck]").change(function() {
-		var val = $(this).val();
-		
-		if(val == 1) $("tr.frequency").show();
-		else $("tr.frequency").hide();
 	});
 	
 	$("#setting input, #setting select").change(function() {
