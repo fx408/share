@@ -3,7 +3,7 @@
   "icons": { "128": "images/icon_128.png", "16": "images/icon_16.png" },
   "name": "Share",
   "description": "Toole share",
-  "version": "1.0.3",
+  "version": "1.0.4",
 
   "permissions": [
   	"cookies",
