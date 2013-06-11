@@ -4,21 +4,35 @@
   "name": "Share",
   "description": "Toole share",
   "version": "1.0.4",
+  
+  "background": {
+  	"scripts": [
+			"js/localStorage.js",
+  		"js/conf.js",
+			"js/background.js"
+  	]
+  },
 
   "permissions": [
-  	"cookies",
-  	"notifications",
-  	"alarms",
-    "tabs",
-    "webNavigation",
+    "tabs", 
     "http://*/*",
-    "https://*/*"
+    "https://*/*",
+    "contextMenus",
+    "webRequest",
+    "webRequestBlocking",
+    "webNavigation",
+    "unlimitedStorage"
   ],
   "content_scripts": [{
 		"matches": ["http://*/*", "https://*/*"],
 		"css": ["css/content.css"],
-		"js": ["js/jquery.min.js", "js/localStorage.js", "js/conf.js", "js/content.js"],
+		"js": ["js/localStorage.js", "js/conf.js", "js/content.js"],
 		"all_frames": true
+	}, {
+		"matches": ["http://*/*", "https://*/*"],
+		"js": ["js/jquery.min.js", "js/content.preload.js"],
+		"all_frames": true,
+		"run_at": "document_start"
 	}],
   "browser_action": {
     "default_icon": "images/icon_16.png",

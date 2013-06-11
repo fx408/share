@@ -1,120 +1,3 @@
-$(function() {
-	$("<img>").attr("src", "https://raw.github.com/fx408/huoban/master/images/share_icon.png");
-
-	$("img").each(function(i) {
-		$(this).attr("_PShare_imageId", '_PShare_'+i);
-	});
-
-	var shareHtml = _PSAPP.getDefaultShareBtnHtml();
-	$(shareHtml).appendTo("body");
-	
-	// 图片
-	$(document).on("mouseover", "img", function() {
-		var imgConf = _PSAPP.conf().image,
-			h = $(this).height() >= imgConf.height,
-			w = $(this).width() >= imgConf.width,
-			c = false;
-		if(imgConf.type == "or") c = h || w;
-		else if(imgConf.type == "and") c = h && w;
-		
-		console.log(c);
-		
-		if(c) {
-			var imgId = $(this).attr("_PShare_imageId");
-			if(!imgId) {
-				imgId = parseInt( Math.random()*1000000+100 );
-				$(this).attr("_PShare_imageId", imgId);
-			}
-			
-			console.log(imgId);
-			
-			if(_PSAPP.currentImageId != imgId || $("#_PShare ._PShare_buttons:hidden").length) {
-				_PSAPP.currentImageId = imgId;
-				_PSAPP.showShareBtnSmall($(this).offset());
-			}
-		}
-	});
-	
-	$("#_PShare ._PShare_title").click(function(e) {
-		_PSAPP.shareType = "image";
-		_PSAPP.showShareBtn();
-		e.stopPropagation();
-	});
-	
-	// 点击分享按钮
-	$("#_PShare ._PShare_buttons a").click(function(e) {
-		var shareTo = $(this).attr("class").replace("_PShare_", "");
-		
-		if(shareTo == "more") {
-			_PSAPP.showShareMore();
-		} else {
-			switch(_PSAPP.shareType) {
-				case "image": _PSAPP.shareImage(shareTo); break;
-				case "text":  _PSAPP.shareText(shareTo); break;
-				case "link": _PSAPP.shareLink(shareTo); break;
-				default: break;
-			}
-		}
-		e.stopPropagation();
-		return false;
-	});
-	
-	$("#_PShare ._PShare_buttons").mouseover(function() {
-		_PSAPP.hideShareLayer();
-	});
-	
-	$(window).keydown(function(e) {
-		/* 
-		* shiftKey 16
-		* ctrlKey 17
-		* space 32
-		* z 90
-		* x 88
-		*/
-		if(e.shiftKey) {
-			switch(e.keyCode) {
-				case 90: // 分享图片快捷键 shift+z
-					_PSAPP.shareType = "image";
-					if(_PSAPP.conf().quicklyShare) _PSAPP.shareImage();
-					else _PSAPP.showShareBtn();
-					break;
-				case 88: // 划词分享快捷键shift+x
-					_PSAPP.selectedText = _PSAPP.getSelectedText();
-					if(_PSAPP.selectedText == "") break;
-					
-					_PSAPP.shareType = "text";
-					if(_PSAPP.conf().quicklyShare) _PSAPP.shareText();
-					else _PSAPP.showShareBtn({top:lastMousedownEvent.pageY, left:lastMousedownEvent.pageX});
-					break;
-				default: break;
-			}
-		}
-	}).click(function() {
-		_PSAPP.hideShareLayer(0.01);
-	});
-	
-	var lastMousedownEvent = {};
-	$(document.body).mousedown(function(e) {
-		lastMousedownEvent = e;
-	});
-	
-	$(document.body).on("click", "a", function(e) {
-		if(e.shiftKey && $(this).attr("href")) { // 
-			if(_PSAPP.conf().quicklyShare) {
-				_PSAPP.shareLink();
-			} else {
-				_PSAPP.shareType = "link";
-				_PSAPP.showShareBtn($(this).offset());
-			}
-			
-			_PSAPP.shareLinkObject = $(this);
-			e.stopPropagation();
-			return false;
-		}
-	});
-	
-});
-
 function _PShareApp() {
 	this.currentImageId = 0;
 	this.shareLinkObject = {};
@@ -122,6 +5,8 @@ function _PShareApp() {
 	
 	this.times = {};
 	this.shareType = "";
+	
+	this.conf = {};
 	
 	// 获取划词内容 对象
 	this.getSelectedText = function() {
@@ -293,21 +178,16 @@ function _PShareApp() {
 		var html = '<div class="_PShare" id="_PShare" style="display:none">'
 			+ '<div class="_PShare_title">分享</div>'
 			+ '<div class="_PShare_buttons" style="display:none">';
-			conf = this.conf(),
-			len = Math.min(conf.icons.length, 5);
+
+		var len = Math.min(this.conf.icons.length, 5);
 
 		for(var i = 0; i < len; i++) {
-			html +='<a class="_PShare_'+conf.icons[i]+'"></a>';
+			html +='<a class="_PShare_'+this.conf.icons[i]+'"></a>';
 		}
 		html +='<a class="_PShare_more"></a>'
 			+ '</div><div class="_PShare_clear"></div></div>';
 		
 		return html;
-	}
-	
-	// 读取用户配置
-	this.conf = function() {
-		return _SHARE_APP_CONF.conf();
 	}
 	
 	// 默认分参数键值
@@ -336,4 +216,116 @@ function _PShareApp() {
 	}
 }
 
+_PShareApp.prototype.init = function(conf) {
+	_PSAPP.conf = conf;
+	
+	$("img").each(function(i) {
+		$(this).attr("_PShare_imageId", '_PShare_'+i);
+	});
+
+	var shareHtml = _PSAPP.getDefaultShareBtnHtml();
+	$(shareHtml).appendTo("body");
+	
+	// 图片
+	$(document).on("mouseover", "img", function() {
+		var imgConf = _PSAPP.conf.image,
+			h = $(this).height() >= imgConf.height,
+			w = $(this).width() >= imgConf.width,
+			allowShare = false;
+		if(imgConf.type == "or") allowShare = h || w;
+		else if(imgConf.type == "and") allowShare = h && w;
+		
+		if(allowShare) {
+			var imgId = $(this).attr("_PShare_imageId");
+			if(!imgId) {
+				imgId = parseInt( Math.random()*1000000+100 );
+				$(this).attr("_PShare_imageId", imgId);
+			}
+			
+			if(_PSAPP.currentImageId != imgId || $("#_PShare ._PShare_buttons:hidden").length) {
+				_PSAPP.currentImageId = imgId;
+				_PSAPP.showShareBtnSmall($(this).offset());
+			}
+		}
+	});
+	
+	$("#_PShare ._PShare_title").click(function(e) {
+		_PSAPP.shareType = "image";
+		_PSAPP.showShareBtn();
+		e.stopPropagation();
+	});
+	
+	// 点击分享按钮
+	$("#_PShare ._PShare_buttons a").click(function(e) {
+		var shareTo = $(this).attr("class").replace("_PShare_", "");
+		
+		if(shareTo == "more") {
+			_PSAPP.showShareMore();
+		} else {
+			switch(_PSAPP.shareType) {
+				case "image": _PSAPP.shareImage(shareTo); break;
+				case "text":  _PSAPP.shareText(shareTo); break;
+				case "link": _PSAPP.shareLink(shareTo); break;
+				default: break;
+			}
+		}
+		e.stopPropagation();
+		return false;
+	});
+	
+	$("#_PShare ._PShare_buttons").mouseover(function() {
+		_PSAPP.hideShareLayer();
+	});
+	
+	$(window).keydown(function(e) {
+		// Z 90, X 88
+		if(e.shiftKey) {
+			switch(e.keyCode) {
+				case 90: // 分享图片快捷键 shift+z
+					_PSAPP.shareType = "image";
+					if(_PSAPP.conf.quicklyShare) _PSAPP.shareImage();
+					else _PSAPP.showShareBtn();
+					break;
+				case 88: // 划词分享快捷键shift+x
+					_PSAPP.selectedText = _PSAPP.getSelectedText();
+					if(_PSAPP.selectedText == "") break;
+					
+					_PSAPP.shareType = "text";
+					if(_PSAPP.conf.quicklyShare) _PSAPP.shareText();
+					else _PSAPP.showShareBtn({top:lastMousedownEvent.pageY, left:lastMousedownEvent.pageX});
+					break;
+				default: break;
+			}
+		}
+	}).click(function() {
+		_PSAPP.hideShareLayer(0.01);
+	});
+	
+	var lastMousedownEvent = {};
+	$(document.body).mousedown(function(e) {
+		lastMousedownEvent = e;
+	});
+	
+	$(document.body).on("click", "a", function(e) {
+		if(e.shiftKey && $(this).attr("href")) { // shift+鼠标单击，分享链接
+			_PSAPP.shareLinkObject = $(this);
+			
+			if(_PSAPP.conf.quicklyShare) {
+				_PSAPP.shareLink();
+			} else {
+				_PSAPP.shareType = "link";
+				_PSAPP.showShareBtn($(this).offset());
+			}
+			e.stopPropagation();
+			return false;
+		}
+	});
+}
+
 _PSAPP = new _PShareApp;
+$(function() {
+	chrome.extension.sendRequest({reqtype: "readConf"},  function(response) {
+		console.log(response);
+		_PSAPP.init(response);
+	});
+});
