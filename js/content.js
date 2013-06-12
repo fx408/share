@@ -233,9 +233,15 @@ _PShareApp.prototype.init = function(conf) {
 			}
 		}
 	}
+	conf.quicklyShare = conf.quicklyShare == 1;
 	_PSAPP.conf = conf;
 	
 	console.log(conf);
+	
+	if(_PSAPP.conf.quicklyShare) {
+		console.log(_PSAPP.conf.quicklyShare);
+	}
+	
 	$("img").each(function(i) {
 		$(this).attr("_PShare_imageId", '_PShare_'+i);
 	});

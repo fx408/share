@@ -34,7 +34,6 @@ body{width:330px; padding:5px; padding-right:0px;}
 .topicList{margin-top:-5px;}
 .configList{margin-top:-21px;}
 
-.settingInput{margin-bottom:0px;}
 .table td.va-inherit{vertical-align: inherit; color:#999}
 
 #searchTopic{min-height:300px;}
@@ -47,6 +46,13 @@ body{width:330px; padding:5px; padding-right:0px;}
 #topShares label{width:60px; margin:0 10px 0 0;}
 #topShares h5{margin:0px;}
 #topShares h5 span{color:#999; font-weight:300; font-size:12px;}
+
+#quicklyShareTo span{flaot:left; font-size:12px;vertical-align: inherit; line-height:30px; margin:0 5px;}
+
+.noMarginBottom{margin-bottom:0px;}
+select.middleSelect, .borderRadius4{border-radius:4px;}
+select.middleSelect{margin:0 4px;}
+#configImage input.span1{width:35px;}
 
 /*
  * 通讯录
@@ -67,7 +73,6 @@ body{width:330px; padding:5px; padding-right:0px;}
 	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 #userDetail:active{-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);}
-
 #userDetail .contents div{width:100%; text-align:left; line-height:20px;}
 #userDetail .operator{border-top: 1px solid #ddd; margin-top:2px;}
 

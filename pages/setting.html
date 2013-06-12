@@ -23,30 +23,21 @@
 						<table class="table table-hover">
 							<tr>
 								<td>
-									<div class="input-prepend settingInput">
+									<div class="input-prepend noMarginBottom">
 										<span class="add-on" style="margin-right:10px;">快速分享</span>
-										<label class="radio inline">
-											<input type="radio" name="quicklyShare" value="1">
-											开
-										</label>
-										<label class="radio inline">
-											<input type="radio" name="quicklyShare" value="0">
-											关
-										</label>
 									</div>
-								</td>
-								<td class="va-inherit"></td>
-							</tr>
-							<tr>
-								<td>
-									<div class="input-prepend settingInput">
-										<span class="add-on" style="margin-right:10px;">默认分享</span>
-										<select name="quicklyShareTo" class="span2">
+									<select name="quicklyShare" class="span1 noMarginBottom">
+										<option value="0">关</option>
+										<option value="1">开</option>
+									</select>
+									
+									<span id="quicklyShareTo" style="display:none">
+										<span>至</span>
+										<select name="quicklyShareTo" class="span2 noMarginBottom">
 											<option value="qzone">QQ空间</option>
 										</select>
-									</div>
+									</span>
 								</td>
-								<td class="va-inherit"></td>
 							</tr>
 							
 							<tr>
@@ -55,7 +46,6 @@
 										<h5>常用分享 <span>(最多选五个)</span></h5>
 									</div>
 								</td>
-								<td class="va-inherit"></td>
 							</tr>
 						</table>
 					</div>
@@ -66,39 +56,20 @@
 							<tbody>
 								<tr>
 									<td>
-										<div class="input-prepend settingInput">
-											<span class="add-on">最小宽度</span>
-											<input class="span2" name="image.width" value="10" type="text" placeholder="">
+										<div class="input-prepend noMarginBottom">
+											<span class="add-on">宽度大于</span>
+											<input class="span1" name="image.width" value="10" type="text" placeholder="">
+											
+											<select name="image.type" class="span1 middleSelect">
+												<option value="or">或</option>
+												<option value="and">且</option>
+											</select>
+											
+											<span class="add-on" style="border-radius:4px 0 0 4px;">高度大于</span>
+											<input class="span1" name="image.height" value="10" type="text" placeholder="">
 										</div>
+										<div style="color:#999">注：仅满足条件的图片会被分享</div>
 									</td>
-									<td class="va-inherit">像素(px)</td>
-								</tr>
-								
-								<tr>
-									<td>
-										<div class="input-prepend settingInput">
-											<span class="add-on">最小高度</span>
-											<input class="span2" name="image.height" value="10" type="text" placeholder="">
-										</div>
-									</td>
-									<td class="va-inherit">像素(px)</td>
-								</tr>
-								
-								<tr>
-									<td>
-										<div class="input-prepend settingInput">
-											<span class="add-on" style="margin-right:10px;">检测关系</span>
-											<label class="radio inline">
-												<input type="radio" name="image.type" value="or" checked="checked">
-												或者
-											</label>
-											<label class="radio inline">
-												<input type="radio" name="image.type" value="and">
-												并且
-											</label>
-										</div>
-									</td>
-									<td></td>
 								</tr>
 							</tbody>
 						</table>

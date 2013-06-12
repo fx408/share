@@ -17,6 +17,10 @@ $(function() {
 		}
 	});
 	
+	$("select[name=quicklyShare]").change(function() {
+		quicklyShareChaneg();
+	});
+	
 	var checkboxMaxLen = {"icons[]":5};
 	
 	$("#setting input, #setting select").change(function() {
@@ -88,4 +92,12 @@ function _init_setting(conf) {
 		$(this).val(v);
 	});
 	
+	quicklyShareChaneg();
+}
+
+function quicklyShareChaneg() {
+	var val = $("select[name=quicklyShare]").val();
+	
+	if(val == 1) $("#quicklyShareTo").show();
+	else $("#quicklyShareTo").hide();
 }
