@@ -44,6 +44,9 @@ body{width:330px; padding:5px; padding-right:0px;}
 
 .nav-tabs > .active > a, .nav-tabs > .active > a:hover{cursor:pointer; color:#075CDB}
 
+#topShares label{width:60px; margin:0 10px 0 0;}
+#topShares h5{margin:0px;}
+#topShares h5 span{color:#999; font-weight:300; font-size:12px;}
 
 /*
  * 通讯录

@@ -122,7 +122,7 @@ function _PShareApp() {
 	
 	// 获取 默认分享
 	this.getShareTo = function(shareTo) {
-		if(!shareTo || !this.urls[shareTo]) shareTo = 'qzone';
+		if(!shareTo || !this.urls[shareTo]) shareTo = this.conf.quicklyShareTo || 'qzone';
 		
 		return shareTo;
 	}
@@ -217,8 +217,25 @@ function _PShareApp() {
 }
 
 _PShareApp.prototype.init = function(conf) {
+	var iconLen = conf.icons.length;
+	if(iconLen < 5) {
+		for(var k in _PSAPP.urls) {
+			var isFind = false;
+			for(var i = 0; i < iconLen; i++){
+				if(k == conf.icons[i]) {
+					isFind = true;
+					break;
+				}
+			}
+			if(isFind == false) {
+				iconLen = conf.icons.push(k);
+				if(iconLen >= 5) break;
+			}
+		}
+	}
 	_PSAPP.conf = conf;
 	
+	console.log(conf);
 	$("img").each(function(i) {
 		$(this).attr("_PShare_imageId", '_PShare_'+i);
 	});
