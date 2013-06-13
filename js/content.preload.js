@@ -1,2 +1,2 @@
 // 预先加载
-$("<img>").attr("src", "https://raw.github.com/fx408/huoban/master/images/share_icon.png");
+$("<img>").attr("src", "http://www.findlark.com/static/icons/share_icon.png");
