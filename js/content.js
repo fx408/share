@@ -60,12 +60,21 @@ function _PShareApp() {
 		if(ofs) $("#_PShare").css({top:ofs.top+"px", left:ofs.left+"px"});
 		$("#_PShare").show();
 		
+		this.hideShareMore();
 		this.hideShareLayer();
 	}
 	
 	// 显示更多
 	this.showShareMore = function() {
-		
+		if($("#_PShare_more_div:visible").length) {
+			this.hideShareMore();
+		} else {
+			$("#_PShare_more_div").show();
+		}
+	}
+	
+	this.hideShareMore = function() {
+		$("#_PShare_more_div").hide();
 	}
 	
 	// 隐藏分享层
@@ -183,9 +192,12 @@ function _PShareApp() {
 		for(var i = 0; i < len; i++) {
 			html +='<a class="_PShare_'+this.conf.icons[i]+'"></a>';
 		}
-		html +='<a class="_PShare_more"></a>'
-			+ '</div><div class="_PShare_clear"></div></div>';
-		
+		html +='<a class="_PShare_more"></a></div>'
+			+ '<div id="_PShare_more_div">';
+		for(var k in this.urls) {
+			html +='<a class="_PShare_'+k+'"></a>';
+		}
+		html += '<div class="_PShare_clear"></div></div></div>';
 		return html;
 	}
 	
@@ -199,7 +211,8 @@ function _PShareApp() {
 		douban: {href:"url", name:"title", image:"pic"},
 		t163: {info:"title+url", images:"pic"},
 		kaixin: {rurl:"url", rtitle:"title", rcontent:"title+pic"},
-		mogujie: {content: "title"}
+		mogujie: {content: "title"},
+		tianya: {picUrl: "url"}
 	};
 	// 地址
 	this.urls = {
@@ -212,7 +225,8 @@ function _PShareApp() {
 		tsohu: 'http://t.sohu.com/third/post.jsp',
 		qq: 'http://connect.qq.com/widget/shareqq/index.html',
 		kaixin: 'http://www.kaixin001.com/repaste/share.php',
-		mogujie: 'http://www.mogujie.com/mshare'
+		mogujie: 'http://www.mogujie.com/mshare',
+		tianya: 'http://open.tianya.cn/widget/send_for.php'
 	};
 	// 其他参数
 	this.otherParams = {
@@ -220,7 +234,8 @@ function _PShareApp() {
 		qq: {desc:'', summary:'', site:'baidu'},
 		tsina: {appkey:'', source:'bshare', retcode:0},
 		t163:{togImg:"true", source: document.title},
-		mogujie: {from: "mogujie"}
+		mogujie: {from: "mogujie"},
+		tianya: {action:'send-html', shareTo:1, relateTYUserName:'', flashVideoUrl:''}
 	}
 }
 
@@ -287,7 +302,7 @@ _PShareApp.prototype.init = function(conf) {
 	});
 	
 	// 点击分享按钮
-	$("#_PShare ._PShare_buttons a").click(function(e) {
+	$("#_PShare a").click(function(e) {
 		var shareTo = $(this).attr("class").replace("_PShare_", "");
 		
 		if(shareTo == "more") {

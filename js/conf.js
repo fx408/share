@@ -79,7 +79,8 @@ var _SHARE_APP_CONF = {
 		"tsohu": "搜狐微博",
 		"qq": "QQ好友",
 		"kaixin": "开心网",
-		"mogujie": "蘑菇街"
+		"mogujie": "蘑菇街",
+		"tianya": "天涯社区"
 	}
 }
 
