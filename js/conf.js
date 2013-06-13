@@ -75,7 +75,11 @@ var _SHARE_APP_CONF = {
 		"tqq": "腾讯微博",
 		"tsina": "新浪微博",
 		"douban": "豆瓣",
-		"t163": "搜狐微博"
+		"t163": "网易微博",
+		"tsohu": "搜狐微博",
+		"qq": "QQ好友",
+		"kaixin": "开心网",
+		"mogujie": "蘑菇街"
 	}
 }
 

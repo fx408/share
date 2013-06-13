@@ -74,7 +74,6 @@ function _PShareApp() {
 		
 		if(this.times.shareBtn) {
 			clearTimeout(this.times.shareBtn);
-			this.times.shareBtn = 0;
 		}
 		this.times.shareBtn = setTimeout(function() {
 			$("#_PShare").fadeOut();
@@ -88,7 +87,7 @@ function _PShareApp() {
 		
 		var shareData = {
 			url: location.href,
-			title: img.attr("title") || img.attr("alt") || document.title || "",
+			title: img.attr("title") || img.attr("alt") || document.title,
 			pic: img.attr("src")
 		};
 		
@@ -195,9 +194,12 @@ function _PShareApp() {
 	// 参数键值差异
 	this.diffKeys = {
 		qzone: {pics:"pic"},
+		qq: {pics:"pic"},
 		renren: {resourceUrl:"url"},
 		douban: {href:"url", name:"title", image:"pic"},
-		t163: {info:"title+url", images:"pic"}
+		t163: {info:"title+url", images:"pic"},
+		kaixin: {rurl:"url", rtitle:"title", rcontent:"title+pic"},
+		mogujie: {content: "title"}
 	};
 	// 地址
 	this.urls = {
@@ -206,13 +208,19 @@ function _PShareApp() {
 		tqq: 'http://share.v.t.qq.com/index.php',
 		renren: 'http://widget.renren.com/dialog/share',
 		douban: 'http://shuo.douban.com/!service/share',
-		t163: 'http://t.163.com/article/user/checkLogin.do'
+		t163: 'http://t.163.com/article/user/checkLogin.do',
+		tsohu: 'http://t.sohu.com/third/post.jsp',
+		qq: 'http://connect.qq.com/widget/shareqq/index.html',
+		kaixin: 'http://www.kaixin001.com/repaste/share.php',
+		mogujie: 'http://www.mogujie.com/mshare'
 	};
 	// 其他参数
 	this.otherParams = {
 		tqq: {c:'share', a:'index'},
+		qq: {desc:'', summary:'', site:'baidu'},
 		tsina: {appkey:'', source:'bshare', retcode:0},
 		t163:{togImg:"true", source: document.title},
+		mogujie: {from: "mogujie"}
 	}
 }
 
