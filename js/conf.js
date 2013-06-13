@@ -64,7 +64,7 @@ var _SHARE_APP_CONF = {
 	// 默认配置
 	defaultConf: {
 		quicklyShare: 0,
-		quicklyShareTo: 'qzone',
+		quicklyShareTo: 'tsina',
 		icons: ["qzone", "tsina", "tqq", "renren", "douban"],
 		image: {height:100, width:100, type:"or"}
 	},

@@ -1,6 +1,6 @@
-._PShare{position:absolute;}
-._PShare_clear{height:0px; width:100%; overflow:hidden; clear:both; line-height:0px;padding:0px;margin:0px}
-._PShare_title, ._PShare_buttons, #_PShare_more_div{
+#_PShare{position:absolute;}
+#_PShare ._PShare_clear{height:0px; width:100%; overflow:hidden; clear:both; line-height:0px;padding:0px;margin:0px}
+#_PShare ._PShare_title, #_PShare ._PShare_buttons, #_PShare_more_div{
 	position:absolute;
 	top:0px;
 	left:0px;
@@ -21,11 +21,11 @@
 	z-index:9999999;
 }
 
-._PShare_buttons{width:180px; height:40px; opacity:0.95;}
-._PShare_title{padding:0 2px;}
+#_PShare ._PShare_buttons{width:180px; height:40px; opacity:0.95;}
+#_PShare ._PShare_title{padding:0 2px;}
 
-._PShare_title:active, ._PShare_buttons:active, #_PShare_more_div:active{ -webkit-box-shadow:0 0 5px rgba(0,0,0,0.5);}
-._PShare_title:hover, #_PShare_more_div:hover{ color: #1B57BC; opacity:1;}
+#_PShare ._PShare_title:active, #_PShare ._PShare_buttons:active, #_PShare_more_div:active{ -webkit-box-shadow:0 0 5px rgba(0,0,0,0.5);}
+#_PShare ._PShare_title:hover, #_PShare_more_div:hover{ color: #1B57BC; opacity:1;}
 
 #_PShare_more_div{width:225px; height:80px; max-height:320px; overflow:auto; opacity:0.9; top:44px; display:none}
 
@@ -38,7 +38,6 @@
 #_PShare a._PShare_more{background-position: 0px 4px;}
 #_PShare a._PShare_qzone{background-position: 0px -76px;}
 #_PShare a._PShare_tsina{background-position: 0px -116px;}
-#_PShare a._PShare_baidu{background-position: 0px -156px;}
 #_PShare a._PShare_renren{background-position: 0px -196px;}
 #_PShare a._PShare_tqq{background-position: 0px -236px;}
 #_PShare a._PShare_douban{background-position: 0px -396px;}
